@@ -1,21 +1,21 @@
 package com.ilelli.user;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.Getter;
+import jakarta.persistence.Lob;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.sql.Timestamp;
 import java.util.Set;
 import java.util.UUID;
 
-@Getter
-@Setter
 @Entity
+@Data
 @NoArgsConstructor
 public class User {
     @Id
@@ -24,6 +24,9 @@ public class User {
     private String mail;
     private String password;
     private String name;
+    @Lob
+    @Nullable
+    private byte[] profilePic;
     private Timestamp lastActiveAt;
     @ElementCollection
     private Set<UUID> invitations;
@@ -38,8 +41,8 @@ public class User {
         this.password = password;
     }
 
-    public void addToFriends(UUID id) {
-        friends.add(id);
+    public void sendInvitation(UUID id) {
+        invitations.add(id);
     }
 
     public void removeFromFriends(UUID id) {

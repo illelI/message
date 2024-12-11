@@ -4,13 +4,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.ilelli</groupId>
-    <artifactId>message</artifactId>
+    <artifactId>messageSM</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>message</name>
     <description>message</description>
     <modules>
         <module>user</module>
+        <module>message</module>
     </modules>
 
     <properties>
