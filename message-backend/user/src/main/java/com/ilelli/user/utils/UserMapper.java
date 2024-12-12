@@ -1,4 +1,7 @@
-package com.ilelli.user;
+package com.ilelli.user.utils;
+
+import com.ilelli.user.User;
+import com.ilelli.user.UserDto;
 
 public class UserMapper {
 

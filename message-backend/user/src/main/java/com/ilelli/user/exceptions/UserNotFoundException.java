@@ -1,4 +1,4 @@
-package com.ilelli.user;
+package com.ilelli.user.exceptions;
 
 public class UserNotFoundException extends RuntimeException {
     public UserNotFoundException() {

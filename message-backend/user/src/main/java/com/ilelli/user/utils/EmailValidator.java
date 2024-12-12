@@ -1,4 +1,4 @@
-package com.ilelli.user;
+package com.ilelli.user.utils;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;

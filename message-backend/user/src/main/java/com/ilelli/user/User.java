@@ -35,13 +35,7 @@ public class User {
     @ElementCollection
     private Set<UUID> blocked;
 
-    public User(String mail, String password, String name) {
-        this.mail = mail;
-        this.name = name;
-        this.password = password;
-    }
-
-    public void sendInvitation(UUID id) {
+    public void addInvitation(UUID id) {
         invitations.add(id);
     }
 

@@ -1,5 +1,6 @@
-package com.ilelli.user;
+package com.ilelli.user.utils;
 
+import com.ilelli.user.utils.EmailValidator;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 

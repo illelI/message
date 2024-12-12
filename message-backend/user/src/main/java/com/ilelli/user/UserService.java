@@ -1,5 +1,8 @@
 package com.ilelli.user;
 
+import com.ilelli.user.exceptions.UserAlreadyExistException;
+import com.ilelli.user.exceptions.UserNotFoundException;
+import com.ilelli.user.utils.UserMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -16,12 +19,44 @@ public class UserService {
         return userRepository.findUserById(id).orElseThrow(UserNotFoundException::new);
     }
 
-    public boolean createUser(UserDto userDto) {
+    public User createUser(UserDto userDto) {
         User user = UserMapper.toUser(userDto);
         if(userRepository.findUserByMail(user.getMail()).isPresent()) {
+            throw new UserAlreadyExistException();
+        }
+        return userRepository.save(user);
+    }
+
+    public boolean sendFriendRequest(UUID senderId, UUID receiverId) {
+        User receiver = loadUser(receiverId);
+
+        if(receiver.getFriends().contains(senderId)) {
             return false;
         }
-        userRepository.save(user);
+
+        if (receiver.getBlocked().contains(senderId)) {
+            return false;
+        }
+
+        if (receiver.getInvitations().contains(senderId)) {
+            return false;
+        }
+
+        receiver.addInvitation(senderId);
+        userRepository.save(receiver);
         return true;
     }
+
+    public void acceptInvitation(UUID receiverId, UUID senderId) {
+        User user = loadUser(receiverId);
+        user.acceptInvitation(senderId);
+        userRepository.save(user);
+    }
+
+    public void rejectInvitation(UUID receiverId, UUID senderId) {
+        User user = loadUser(receiverId);
+        user.rejectInvitation(senderId);
+        userRepository.save(user);
+    }
+
 }
