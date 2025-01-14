@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Data
 public class Message {
     @EmbeddedId
-    private MessagePrimaryKey key;
+    private MessagePK key;
     private LocalDateTime date;
     private MessageContent content;
 }

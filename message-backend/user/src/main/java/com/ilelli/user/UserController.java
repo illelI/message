@@ -56,4 +56,25 @@ public class UserController {
         return HttpStatus.OK;
     }
 
+    @PostMapping("/removeFromFriends")
+    public HttpStatus removeFromFriends(@RequestParam UUID friendId, Principal principal) {
+        UUID userId = UUID.fromString(principal.getName());
+        userService.removeFromFriends(userId, friendId);
+        return HttpStatus.OK;
+    }
+
+    @PostMapping("/block")
+    public HttpStatus blockUser(@RequestParam UUID toBlockId, Principal principal) {
+        UUID userId = UUID.fromString(principal.getName());
+        userService.addToBlocked(userId, toBlockId);
+        return HttpStatus.OK;
+    }
+
+    @PostMapping("/unblock")
+    public HttpStatus unblockUser(@RequestParam UUID unblockedId, Principal principal) {
+        UUID userId = UUID.fromString(principal.getName());
+        userService.removeFromBlocked(userId, unblockedId);
+        return HttpStatus.OK;
+    }
+
 }

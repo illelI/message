@@ -59,4 +59,22 @@ public class UserService {
         userRepository.save(user);
     }
 
+    public void removeFromFriends(UUID userId, UUID friendId) {
+        User user = loadUser(userId);
+        user.removeFromFriends(friendId);
+        userRepository.save(user);
+    }
+
+    public void addToBlocked(UUID userId, UUID toBlockId) {
+        User user = loadUser(userId);
+        user.addToBlocked(toBlockId);
+        userRepository.save(user);
+    }
+
+    public void removeFromBlocked(UUID userId, UUID unblockedId) {
+        User user = loadUser(userId);
+        user.removeFromBlocked(unblockedId);
+        userRepository.save(user);
+    }
+
 }

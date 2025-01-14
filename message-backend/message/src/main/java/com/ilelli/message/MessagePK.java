@@ -8,7 +8,7 @@ import java.util.UUID;
 
 @Embeddable
 @Data
-public class MessagePrimaryKey implements Serializable {
+public class MessagePK implements Serializable {
     private UUID sender;
     private UUID receiver;
     private UUID messageNO;
