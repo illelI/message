@@ -1,4 +1,9 @@
-package com.ilelli.message;
+package com.ilelli.message.utils;
+
+import com.ilelli.message.Message;
+import com.ilelli.message.MessageContent;
+import com.ilelli.message.MessageDto;
+import com.ilelli.message.MessagePK;
 
 import java.time.LocalDateTime;
 import java.util.UUID;

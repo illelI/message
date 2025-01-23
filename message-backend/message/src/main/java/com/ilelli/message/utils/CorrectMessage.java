@@ -1,4 +1,4 @@
-package com.ilelli.message;
+package com.ilelli.message.utils;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
