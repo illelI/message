@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://message-db.default.svc.cluster.local:5433/message_db
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
