@@ -21,8 +21,12 @@ spec:
         io.kompose.service: message
     spec:
       containers:
-        - image: message
+        - image: message_message:latest
           name: message
+          imagePullPolicy: Never
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: prod
           ports:
             - containerPort: 8080
               protocol: TCP

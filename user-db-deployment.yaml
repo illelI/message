@@ -21,15 +21,16 @@ spec:
         io.kompose.service: user-db
     spec:
       containers:
-        - env:
+        - name: user-db
+          image: message_user-db:latest
+          imagePullPolicy: Never
+          env:
             - name: POSTGRES_DB
               value: user_db
             - name: POSTGRES_PASSWORD
               value: postgres
             - name: POSTGRES_USER
               value: postgres
-          image: user-db
-          name: user-db
           ports:
             - containerPort: 5432
               protocol: TCP

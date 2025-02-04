@@ -21,15 +21,16 @@ spec:
         io.kompose.service: message-db
     spec:
       containers:
-        - env:
+        - name: message-db
+          image: message_message-db:latest
+          imagePullPolicy: Never
+          env:
             - name: POSTGRES_DB
               value: message_db
             - name: POSTGRES_PASSWORD
               value: postgres
             - name: POSTGRES_USER
               value: postgres
-          image: message-db
-          name: message-db
           ports:
             - containerPort: 5432
               protocol: TCP
