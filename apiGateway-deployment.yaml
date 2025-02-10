@@ -5,29 +5,29 @@ metadata:
     kompose.cmd: C:\Users\Admin\AppData\Local\Microsoft\WinGet\Packages\Kubernetes.kompose_Microsoft.Winget.Source_8wekyb3d8bbwe\kompose.exe convert
     kompose.version: 1.35.0 (9532ceef3)
   labels:
-    io.kompose.service: message
-  name: message
+    io.kompose.service: apiGateway
+  name: apiGateway
 spec:
   replicas: 1
   selector:
     matchLabels:
-      io.kompose.service: message
+      io.kompose.service: apiGateway
   template:
     metadata:
       annotations:
         kompose.cmd: C:\Users\Admin\AppData\Local\Microsoft\WinGet\Packages\Kubernetes.kompose_Microsoft.Winget.Source_8wekyb3d8bbwe\kompose.exe convert
         kompose.version: 1.35.0 (9532ceef3)
       labels:
-        io.kompose.service: message
+        io.kompose.service: apiGateway
     spec:
       containers:
-        - image: message_message:latest
-          name: message
+        - image: message_apiGateway:latest
+          name: apiGateway
           imagePullPolicy: Never
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: prod
           ports:
-            - containerPort: 8082
+            - containerPort: 8080
               protocol: TCP
       restartPolicy: Always

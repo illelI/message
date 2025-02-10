@@ -1,12 +1,22 @@
 version: '3.8'
 
 services:
+    apiGateway:
+        build:
+            context: ./message-backend
+            dockerfile: apiGateway/Dockerfile
+        ports:
+            - "8080:8080"
+        depends_on:
+            - user
+            - message
+    
     user:
         build:
             context: ./message-backend
             dockerfile: user/Dockerfile
         ports:
-            - "8080:8080"
+            - "8082:8080"
         depends_on:
             - user-db
 

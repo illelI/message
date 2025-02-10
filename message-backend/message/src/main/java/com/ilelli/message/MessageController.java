@@ -4,11 +4,13 @@ import com.ilelli.message.utils.MessageMapper;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.security.Principal;
 import java.util.UUID;
 
 @Controller
+@RequestMapping("/message")
 public class MessageController {
     private final MessageService messageService;
     private final SimpMessagingTemplate messagingTemplate;
@@ -17,6 +19,7 @@ public class MessageController {
         this.messageService = messageService;
         this.messagingTemplate = messagingTemplate;
     }
+
 
     @MessageMapping("/sendMessage")
     public void sendMessage(MessageDto messageDto, Principal principal) {

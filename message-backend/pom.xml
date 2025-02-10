@@ -12,6 +12,7 @@
     <modules>
         <module>user</module>
         <module>message</module>
+        <module>apiGateway</module>
     </modules>
 
     <properties>
