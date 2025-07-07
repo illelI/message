@@ -1,4 +1,4 @@
-package com.ilelli.message;
+package com.ilelli.message.model;
 
 import com.ilelli.message.utils.CorrectMessage;
 import jakarta.persistence.Embeddable;

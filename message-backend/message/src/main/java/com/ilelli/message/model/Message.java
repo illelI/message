@@ -1,4 +1,4 @@
-package com.ilelli.message;
+package com.ilelli.message.model;
 
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;

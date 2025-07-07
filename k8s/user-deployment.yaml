@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    kompose.cmd: C:\Users\Admin\AppData\Local\Microsoft\WinGet\Packages\Kubernetes.kompose_Microsoft.Winget.Source_8wekyb3d8bbwe\kompose.exe convert
+    kompose.cmd: kompose convert -f docker-compose.yml -o k8s/
     kompose.version: 1.35.0 (9532ceef3)
   labels:
     io.kompose.service: user
@@ -15,13 +15,16 @@ spec:
   template:
     metadata:
       annotations:
-        kompose.cmd: C:\Users\Admin\AppData\Local\Microsoft\WinGet\Packages\Kubernetes.kompose_Microsoft.Winget.Source_8wekyb3d8bbwe\kompose.exe convert
+        kompose.cmd: kompose convert -f docker-compose.yml -o k8s/
         kompose.version: 1.35.0 (9532ceef3)
       labels:
         io.kompose.service: user
     spec:
       containers:
-        - image: user
+        - env:
+            - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
+              value: kafka:9092
+          image: user
           name: user
           ports:
             - containerPort: 8080

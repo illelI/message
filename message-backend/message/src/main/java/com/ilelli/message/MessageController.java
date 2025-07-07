@@ -1,5 +1,7 @@
 package com.ilelli.message;
 
+import com.ilelli.message.model.Message;
+import com.ilelli.message.model.MessageDto;
 import com.ilelli.message.utils.MessageMapper;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
@@ -25,13 +27,7 @@ public class MessageController {
     public void sendMessage(MessageDto messageDto, Principal principal) {
         UUID userid = UUID.fromString(principal.getName());
         Message message = MessageMapper.toMessage(userid, messageDto);
-        messageService.saveMessage(message);
-
-        messagingTemplate.convertAndSendToUser(
-                message.getKey().getReceiver().toString(),
-                "/private/user",
-                message.getContent()
-        );
+        messageService.saveAndSendToReceiverMessage(message);
     }
 
 }

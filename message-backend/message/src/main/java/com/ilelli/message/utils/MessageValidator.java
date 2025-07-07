@@ -1,7 +1,6 @@
 package com.ilelli.message.utils;
 
-import com.ilelli.message.MessageContent;
-import com.ilelli.message.utils.CorrectMessage;
+import com.ilelli.message.model.MessageContent;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
